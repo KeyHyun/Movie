@@ -68,6 +68,10 @@ public class MovieController {
 		return "movie/booking";
 	}
 	
+	@RequestMapping("movie/detail.do")
+	public String detail_view() {
+		return "movie/detail";
+	}
 	//@RequestMapping("movie/insert.do")
 	//public String insert (@ModelAttribute MovieDTO dto) {
 		

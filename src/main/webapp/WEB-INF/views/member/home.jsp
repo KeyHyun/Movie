@@ -185,7 +185,7 @@
 								</div>
 							</div>
 						</div>
-						<a class="btn btn-light btn-xl js-scroll-trigger" href="#services">상영
+						<a class="btn btn-light btn-xl js-scroll-trigger" href="movie/detail.do">상영
 							예정작 상세보기</a>
 					</div>
 				</div>
