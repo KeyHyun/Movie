@@ -29,10 +29,7 @@ public class MovieServiceImpl implements MovieService {
 	@Autowired
 	MovieAPIService apiService;
 
-	@Override
-	public void insertMovie (MovieDTO vo) {
-		
-	}
+
 	public List<String> search() {
 		List<String> imgurl = new ArrayList<>();
 		Calendar c = Calendar.getInstance();
@@ -106,6 +103,73 @@ public class MovieServiceImpl implements MovieService {
 
 	
 	}
+	
+	public List<String> movie_list()
+	{
+		List<String> m_name = new ArrayList<>();
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.DATE, -1);
+
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd");
+		String targetDt = format1.format(c.getTime());
+
+//		String targetDt = format1.format(date);
+		
+		System.out.println(targetDt);
+		String itemPerPage = "10";
+		String multiMovieYn = "";
+		String repNationCd ="";
+		String wideAreaCd = "";
+
+		String key = "511de146fb18096bd169f70969dc5ff7";
+		KobisOpenAPIRestService service = new KobisOpenAPIRestService(key);
+		
+		String dailyResponse;
+		try {
+			dailyResponse = service.getDailyBoxOffice(true,targetDt,itemPerPage,multiMovieYn,repNationCd,wideAreaCd);
+			JSONParser parser = new JSONParser();
+        
+		
+			System.out.println("::::"+dailyResponse);
+			
+			
+			JSONObject obj = (JSONObject)parser.parse(dailyResponse);
+			String objStr = obj.get("boxOfficeResult").toString();
+			
+			JSONObject obj2 =  (JSONObject)parser.parse(objStr);
+			String objStr2 = obj2.get("dailyBoxOfficeList").toString();
+			
+			
+			JSONArray list = (JSONArray)parser.parse(objStr2);
+			
+			System.out.println(list.size());
+			
+			for(int i = 0; i < list.size(); i++) {
+				JSONObject ttt =  (JSONObject)parser.parse(list.get(i).toString());
+				String tttstr = ttt.get("movieNm").toString();
+				System.out.println(tttstr);
+				m_name.add(tttstr);
+				
+			}
+             
+             
+        } catch (ParseException e) {
+             System.out.println("변환에 실패");
+             e.printStackTrace();
+        }catch (Exception e) {
+			// TODO: handle exception
+        	e.printStackTrace();
+		}
+		
+		return m_name;
+	
+	}
+	
+	@Override
+	public void insertMovie (MovieDTO vo) {
+		moviedao.insertMovie(vo);
+	}
+	
 	
 	
 }

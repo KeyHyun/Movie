@@ -39,7 +39,7 @@ public class MemberController {
 	@RequestMapping("member/insert.do")
 	public String insert(@ModelAttribute MemberDTO dto) {
 		memberService.insertMember(dto);
-		return "member/home";
+		return "redirect:member/home";
 	}
 	
 	//로그인을 위한 login page로 이동
@@ -63,19 +63,20 @@ public class MemberController {
 		return mav;
 	}
 	
-	@RequestMapping("member/logout.do")
-	public String logout(HttpSession session) {
 	
-		memberService.logout(session);
-		return "member/home";
-	}
-//	public ModelAndView logout(HttpSession session, ModelAndView mav) {
-//		
+//	public String logout(HttpSession session) {
+//	
 //		memberService.logout(session);
-//		mav.setViewName("member/home");
-//		mav.addObject("message", "logout");
-//		return mav;
-	//}
+//		return "member/home";
+//	}
+	@RequestMapping("member/logout.do")
+	public ModelAndView logout(HttpSession session, ModelAndView mav) {
+		
+		memberService.logout(session);
+		mav.setViewName("member/home");
+		mav.addObject("message", "logout");
+		return mav;
+	}
 	
 	@RequestMapping("member/view.do")
 	public String view(@RequestParam String userid, Model model) {

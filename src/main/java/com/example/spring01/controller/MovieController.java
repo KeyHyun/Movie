@@ -13,16 +13,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.spring01.model.dto.MemberDTO;
+import com.example.spring01.model.dto.MovieDTO;
 import com.example.spring01.service.MemberService;
 import com.example.spring01.service.MovieService;
 
 @Controller
 public class MovieController {
 	private static final Logger logger=
-			LoggerFactory.getLogger(MemberController.class);
+			LoggerFactory.getLogger(MovieController.class);
 	@Inject
 	MemberService memberService;
 	
@@ -52,6 +55,19 @@ public class MovieController {
 	
 		return result;
 	}
+	
+	@RequestMapping("movie/booking.do")
+	public String booking_page(Model model) {
+		List<String> m_name = movieService.movie_list();
+		System.out.println(m_name);
+		for(int i=1;i<m_name.size();i++)
+		{
+		model.addAttribute("movie", m_name);
+		}
+		System.out.println(model);
+		return "movie/booking";
+	}
+	
 	//@RequestMapping("movie/insert.do")
 	//public String insert (@ModelAttribute MovieDTO dto) {
 		

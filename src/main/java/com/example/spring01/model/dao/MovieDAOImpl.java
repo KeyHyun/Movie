@@ -21,5 +21,14 @@ public class MovieDAOImpl implements MovieDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("movie.movieList"); //name space.Id
 	}
-
+	
+	@Override
+	public void insertMovie (MovieDTO vo) {
+		sqlSession.insert("movie.insertMovie",vo);
+	}
+	
+	@Override
+	public void insertMovie (String string) {
+		sqlSession.insert("movie.insertMovie",string);
+	}
 }

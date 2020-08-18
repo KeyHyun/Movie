@@ -10,4 +10,5 @@ public interface MovieService {
 	
 	public void insertMovie (MovieDTO vo);
 	public List<String> search () ;
+	public List<String> movie_list();
 }

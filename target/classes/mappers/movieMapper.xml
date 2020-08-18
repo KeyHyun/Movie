@@ -9,6 +9,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from movies
 		where userid=#{userid}
 	</select>
-
+	
+	<insert id="insertMovie">
+	insert into MOVIE_LIST(M_NAME) values (m_name.get(i));
+	</insert>
+	
+	<update id="initMovie">
+		UPDATE MOVIE_LIST
+	SET M_NAME = NULL
+	WHERE M_NAME is not null;
+	</update>
 </mapper>
 
