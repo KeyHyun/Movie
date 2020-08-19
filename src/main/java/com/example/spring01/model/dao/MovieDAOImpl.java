@@ -19,7 +19,7 @@ public class MovieDAOImpl implements MovieDAO {
 	@Override
 	public List<MovieDTO> movieList() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("movie.movieList"); //name space.Id
+		return sqlSession.selectList("movie.selectSchedule"); //name space.Id
 	}
 	
 	@Override

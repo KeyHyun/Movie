@@ -19,8 +19,6 @@
  <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/booking.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custom.css" />
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
 <!-- Google fonts-->
@@ -91,9 +89,11 @@
 			 <div class="reserve-container h-100">
         <div class="movie-part" style="width : 200px">
             <div class="reserve-title">영화</div>
+            <form action="s_movie.do">
                <c:forEach var="i" items="${movie}">
-            	<button class="m_button" name="movie_name" value="${i}">${i}</button><br>          	
+            	<button type="submit" class="m_button" name="s_movie" value="${i}">${i}</button><br>          	
 			</c:forEach>
+			</form>
             </div>
                     <div class="theater-part">
             <div class="reserve-title">극장</div>

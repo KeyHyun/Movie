@@ -19,5 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SET M_NAME = NULL
 	WHERE M_NAME is not null;
 	</update>
+	
+	<select id="selectSchedule" resultType="movieDto">
+		select s_time, s_branch from SCHEDULE where s_movie=#{s_movie};
+	</select>
+	
 </mapper>
 

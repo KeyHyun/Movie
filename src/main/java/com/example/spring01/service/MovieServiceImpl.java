@@ -169,6 +169,10 @@ public class MovieServiceImpl implements MovieService {
 		moviedao.insertMovie(vo);
 	}
 	
+	@Override
+	public List<MovieDTO> movieList(){
+		return moviedao.movieList();
+	}
 	
 	
 }

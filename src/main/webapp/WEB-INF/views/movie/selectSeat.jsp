@@ -186,7 +186,7 @@
 							<div class="ticket-price-title">가격</div>
 							<div class="ticket-price">0원</div>
 						</div>
-						<form action="moveKakao.do" class="seatForm" method="post">
+						<form action="last.do" class="seatForm" method="post">
 							<input type="hidden" class="title" name="title"> <input
 								type="hidden" class="selectedTheater" name="selectedTheater">
 							<input type="hidden" class="reserveDate" name="movieDate">
@@ -198,7 +198,7 @@
 							<!-- 결제 정보 -->
 							<input type="hidden" class="payMoney" name="payMoney">
 							<button type="button" class="reserve-button">
-								결제하기<img src="./images/payment_icon_yellow_medium.png">
+								결제하기
 							</button>
 						</form>
 					</div>

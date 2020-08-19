@@ -16,7 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.example.spring01.model.dao.MovieDAO;
+import com.example.spring01.model.dto.MovieDTO;
 import com.example.spring01.service.MemberService;
 import com.example.spring01.service.MovieService;
 
@@ -28,6 +29,9 @@ public class MovieController {
 
 	@Autowired
 	MovieService movieService;
+	
+	@Autowired
+	MovieDAO movieDao;
 
 	@RequestMapping("movie/copy.do")
 	public String moviecopy() {
@@ -57,14 +61,20 @@ public class MovieController {
 	public String booking_page(Model model) {
 		List<String> m_name = movieService.movie_list();
 		System.out.println(m_name);
-		// for(int i=1;i<m_name.size();i++)
-		// {
 		model.addAttribute("movie", m_name);
-		// }
+		System.out.println(model);
+		//model2.addAttribute("s_list",s_list);
+		//System.out.print(model2);
+		return "movie/booking";
+	}
+	@RequestMapping("movie/s_movie.do")
+	public String s_movie(Model model) {
+		List<MovieDTO> s_list = movieService.movieList();
+		System.out.println(s_list);
+		model.addAttribute("s_list", s_list);
 		System.out.println(model);
 		return "movie/booking";
 	}
-
 	@RequestMapping("movie/selectSeat.do")
 	public String select_seat() {
 		return "movie/selectSeat";
@@ -73,6 +83,11 @@ public class MovieController {
 	@RequestMapping("movie/detail.do")
 	public String detail_view() {
 		return "movie/detail";
+	}
+	
+	@RequestMapping("movie/last.do")
+	public String last_view() {
+		return "movie/last";
 	}
 	// @RequestMapping("movie/insert.do")
 	// public String insert (@ModelAttribute MovieDTO dto) {
