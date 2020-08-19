@@ -18,8 +18,7 @@
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
 <!-- Google fonts-->
 <link
 	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
@@ -120,12 +119,14 @@
 						</div>
 						<c:choose>
 							<c:when test="${sessionScope.userid != null }">
-							<a class="btn btn-light btn-xl js-scroll-trigger"style="margin-top: 30px;" href="movie/booking.do">영화 예매하기</a>
+								<a class="btn btn-light btn-xl js-scroll-trigger"
+									style="margin-top: 30px;" href="movie/booking.do">영화 예매하기</a>
 							</c:when>
 							<c:otherwise>
-							<a class="btn btn-light btn-xl js-scroll-trigger"style="margin-top: 30px;" href="member/login.do">영화 예매하기</a>
+								<a class="btn btn-light btn-xl js-scroll-trigger"
+									style="margin-top: 30px;" href="movie/booking.do">영화 예매하기</a>
 							</c:otherwise>
-							</c:choose>
+						</c:choose>
 					</div>
 					<%--  <p class="text-white-75 font-weight-light mb-5">Start Bootstrap can help you build better websites using the Bootstrap framework! Just download a theme and start customizing, no strings attached!</p>
                         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>--%>
@@ -185,10 +186,11 @@
 								</div>
 							</div>
 						</div>
-						<a class="btn btn-light btn-xl js-scroll-trigger" href="movie/detail.do">상영
-							예정작 상세보기</a>
+						<a class="btn btn-light btn-xl js-scroll-trigger"
+							href="movie/detail.do">상영 예정작 상세보기</a>
 					</div>
 				</div>
+			</div>
 			</div>
 	</section>
 	<!-- Services-->
@@ -276,30 +278,29 @@
 	<script src="<c:url value="/resources/js/scripts.js" />"></script>
 </body>
 <script type="text/javascript">
-    $( document ).ready(function() {
-        $('.carousel-item:eq(0)').addClass('active');
-//     	$.ajax({
-//         	url : "/movie/test.do",
-//         	type : 'get',
-//         	contentType: "application/json; charset=utf-8;",
-//             dataType: "json",
-//           	success: function(data){
-//               	var str = data.imgurl+'';
-//               	var list = str.split(",");
-// 	             //console.log(list.size);
-//               	for(var i = 1; i <= 3; i++){
-//               		$('#top'+i).attr('src',list[i-1]);
-// 	              	console.log($('#top'+i).attr('src'));
-//                   }
-//           	},
-//           	error: function(){
-//           		alert("error");
-//           	}
-//         });
-       
-    });
-    
-    </script>
+	$(document).ready(function() {
+		$('.carousel-item:eq(0)').addClass('active');
+		//     	$.ajax({
+		//         	url : "/movie/test.do",
+		//         	type : 'get',
+		//         	contentType: "application/json; charset=utf-8;",
+		//             dataType: "json",
+		//           	success: function(data){
+		//               	var str = data.imgurl+'';
+		//               	var list = str.split(",");
+		// 	             //console.log(list.size);
+		//               	for(var i = 1; i <= 3; i++){
+		//               		$('#top'+i).attr('src',list[i-1]);
+		// 	              	console.log($('#top'+i).attr('src'));
+		//                   }
+		//           	},
+		//           	error: function(){
+		//           		alert("error");
+		//           	}
+		//         });
+
+	});
+</script>
 
 </html>
 

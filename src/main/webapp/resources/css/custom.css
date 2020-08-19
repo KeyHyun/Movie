@@ -8,3 +8,31 @@
 h1 {
 	font-family : 'Hanna';
 }
+
+.m_button {
+	width : 200px; 
+	height : 50px; 
+	border-radius:10px; 
+}
+
+.m_button:hover {
+	background-color: #333;
+	color: white;
+}
+
+.m_button:focus {
+	background-color:#333;
+	color: white;  
+}
+
+.m_button:active {
+	background-color:#333;
+	color: white;  
+}
+
+.r_button {
+
+  margin-top : 10px;
+  width : 100px;
+  height : 50px;
+}

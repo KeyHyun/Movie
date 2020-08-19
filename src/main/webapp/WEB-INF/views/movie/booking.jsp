@@ -18,11 +18,11 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
  <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/booking.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custom.css" />
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
-	crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
 <!-- Google fonts-->
 <link
 	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
@@ -46,7 +46,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
 		id="mainNav">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top">Key's
+			<a class="navbar-brand js-scroll-trigger" href="/">Key's
 				Cinema</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
@@ -87,36 +87,37 @@
 	</nav>
 	<!-- Masthead-->
 	<header class="masthead">
-		<div class="container" style="height : 650px">
+		<div class="container" style="height : 600px">
 			 <div class="reserve-container h-100">
-        <div class="movie-part">
+        <div class="movie-part" style="width : 200px">
             <div class="reserve-title">영화</div>
-            <div class="sort-wrapper">
-                <div class="sort-rate sort-selected">예매율순</div>
-                <div class="sort-korean">가나다순</div>
-            </div>
-            <div class="movie-list">
-            <c:forEach var="i" items="${movie}">
-            	<c:out value="${i}">
-            	</c:out>
-            		
+               <c:forEach var="i" items="${movie}">
+            	<button class="m_button" name="movie_name" value="${i}">${i}</button><br>          	
 			</c:forEach>
-			
             </div>
-        </div>
-        <div class="theater-part">
+                    <div class="theater-part">
             <div class="reserve-title">극장</div>
             <div class="theater-wrapper"></div>
         </div>
         <div class="day-part">
             <div class="reserve-title">날짜</div>
-            <div class="reserve-date" style="height : 617px"></div>
+            <div class="reserve-date" style="height : 568px"></div>
         </div>
         <div class="time-part">
             <div class="reserve-title">시간</div>
         </div>
+         
+			
+            </div>
+        </div>
+        <div style="text-align:center;">
+        <form method="post" action="selectSeat.do">
+        <input class="r_button" type="submit" value="예매하기" name="reser">
+        </form>
+        </div>
 
-    </div>
+
+   
     <script>
         const date = new Date();
         // console.log(date.getFullYear());
@@ -171,10 +172,41 @@
                 })
                 button.classList.add("movie-date-wrapper-active");
             })
-        }</script>
-		</div>
+        }
+
+      
+        $( document ).ready( function() {
+            
+            $("#m_button").click(function(){
+//             	$.ajax({
+//             	url : "/movie/test.do",
+//             	type : 'get',
+//             	contentType: "application/json; charset=utf-8;",
+//                 dataType: "json",
+//               	success: function(data){
+//                   	var str = data.imgurl+'';
+//                   	var list = str.split(",");
+//     	             //console.log(list.size);
+//                   	for(var i = 1; i <= 3; i++){
+//                   		$('#top'+i).attr('src',list[i-1]);
+//     	              	console.log($('#top'+i).attr('src'));
+//                       }
+//               	},
+//               	error: function(){
+//               		alert("error");
+//               	}
+//             });
+                      alert($(this).attr('value'));
+
+            });
+      
+        });
+
+
+        </script>
+	
 	</header>
-    </script>
+
 
 </html>
 
