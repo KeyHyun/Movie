@@ -30,6 +30,7 @@
 	href="${pageContext.request.contextPath}/resources/css/seat.css">
 <link rel='stylesheet'
 	href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">	
 <script
 	src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
 <link rel="stylesheet"
@@ -108,12 +109,21 @@
             </div>
 			</div>
 		</div>
-		<div class="container">
-		<div style="margin-top : 50px; border:solid; width : 650px; height : 300px; justify-content: center; display: flex; margin-left : 220px;"> 예매 정보
-           <div style="justify-content: flex-start;">아에이오우</div>
+		<div class="container" style="width : 450px;">
+		<div class="reser_container"> 예매 정보
+           <div class="reser_container_div">영화명 :</div>
+           <div class="reser_container_div">상영관 :</div>
+           <div class="reser_container_div">상영시간 :</div>
+            <div class="reser_container_div">상영날짜 :</div>
             </div>
             
 		</div>
+		<form action="/">
+		<div style="text-align : center; margin-top : 30px;">
+		<button>돌아가기</button>
+		</form>
+		</div>
+		
 	</header>
 	</body>
 	</html>

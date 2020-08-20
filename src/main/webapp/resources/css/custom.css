@@ -36,3 +36,24 @@ h1 {
   width : 100px;
   height : 50px;
 }
+
+.reser_container {
+	font-family: 'Do Hyeon', sans-serif;
+	margin-top : 30px;
+	font-size : 20px;
+	text-align : center;
+	border : 1px solid #dddddd;
+	font-weight : bold;
+	padding-top : 10px;
+	color: #dddddd;
+}
+
+.reser_container_div {
+	font-family: 'Do Hyeon', sans-serif;
+	font-size : 16px;
+	text-align : left;
+	margin-left : 100px;
+	font-weight: bold;
+	height : 100px;
+	padding-top: 30px;
+}

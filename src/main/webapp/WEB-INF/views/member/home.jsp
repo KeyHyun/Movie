@@ -73,7 +73,7 @@
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="/member/write.do">회원가입</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#portfolio">My page</a></li>
+						href="/member/my.do">My page</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#contact">고객센터</a></li>
 

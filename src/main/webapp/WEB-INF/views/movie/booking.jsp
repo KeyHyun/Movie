@@ -89,9 +89,9 @@
 			 <div class="reserve-container h-100">
         <div class="movie-part" style="width : 200px">
             <div class="reserve-title">영화</div>
-            <form action="s_movie.do">
+           <form action="s_movie.do" method="post">
                <c:forEach var="i" items="${movie}">
-            	<button type="submit" class="m_button" name="s_movie" value="${i}">${i}</button><br>          	
+            	<button class="m_button" name="movie" data-movie="${i}">${i}</button><br>          	
 			</c:forEach>
 			</form>
             </div>
@@ -174,10 +174,28 @@
             })
         }
 
-      
-        $( document ).ready( function() {
+
+        $( document ).ready( function() {           	
+            $(".m_button").on('click',(function(){
+            	console.log($(this).data('movie'));
+                 $.ajax({
+                 url : "/movie/s_movie.do",
+                 type : 'post',
+                 data:{"movie":$(this).data('movie')},
+                 contentType: "charset=utf-8",
+                   success: function(data){
+                    console.log("성공");
+                   },
+                   error: function(){
+                      console.log("실패");
+                   }
+              });
+                
+ })); });
+        
+//        $( document ).ready( function() {
             
-            $("#m_button").click(function(){
+//            $("#m_button").click(function(){
 //             	$.ajax({
 //             	url : "/movie/test.do",
 //             	type : 'get',
@@ -196,11 +214,11 @@
 //               		alert("error");
 //               	}
 //             });
-                      alert($(this).attr('value'));
+//                      alert($(this).attr('value'));
 
-            });
+  //          });
       
-        });
+    //    });
 
 
         </script>

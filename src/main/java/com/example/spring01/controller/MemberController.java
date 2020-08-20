@@ -30,6 +30,10 @@ public class MemberController {
 //		return "member/member_list";
 //	}
 	
+	@RequestMapping("member/my.do")
+	public String mypage() {
+		return "member/my";
+	}
 	//회원 가입을 위한 write page 이동 
 	@RequestMapping("member/write.do")
 	public String write() {

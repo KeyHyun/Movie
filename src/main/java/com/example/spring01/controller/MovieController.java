@@ -13,7 +13,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.spring01.model.dao.MovieDAO;
@@ -33,11 +35,6 @@ public class MovieController {
 	@Autowired
 	MovieDAO movieDao;
 
-	@RequestMapping("movie/copy.do")
-	public String moviecopy() {
-		logger.info("¼º°ø");
-		return "movie/copy";
-	}
 
 	@ResponseBody
 	@RequestMapping("movie/test.do")
@@ -67,14 +64,17 @@ public class MovieController {
 		//System.out.print(model2);
 		return "movie/booking";
 	}
+	
 	@RequestMapping("movie/s_movie.do")
-	public String s_movie(Model model) {
-		List<MovieDTO> s_list = movieService.movieList();
-		System.out.println(s_list);
-		model.addAttribute("s_list", s_list);
-		System.out.println(model);
+	public String s_movie(HttpServletRequest request, @RequestParam ("movie") String movie) {
+//		List<MovieDTO> s_list = movieService.movieList();
+//		System.out.println(s_list);
+//		model.addAttribute("s_list", s_list);
+		request.getParameter(movie);
+		System.out.println(movie);
 		return "movie/booking";
 	}
+	
 	@RequestMapping("movie/selectSeat.do")
 	public String select_seat() {
 		return "movie/selectSeat";
