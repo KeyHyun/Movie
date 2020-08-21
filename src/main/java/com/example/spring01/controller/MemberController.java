@@ -36,7 +36,7 @@ public class MemberController {
 	@RequestMapping("member/insert.do")
 	public String insert(@ModelAttribute MemberDTO dto) {
 		memberService.insertMember(dto);
-		return "redirect:home";
+		return "/";
 	}
 
 	// 로그인을 위한 login page로 이동
