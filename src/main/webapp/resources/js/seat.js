@@ -75,7 +75,7 @@ function initList(list, li) {
         );
         console.log(selectSeatListUlActive);
         selectListUiFunction(selectSeatListUlActive);
-        console.log('머니머니' + allMoney);
+        console.log(allMoney);
 
         console.log(normalNumber);
         console.log(teenNumber);
@@ -134,7 +134,6 @@ function selectListUiFunction(selectSeatListUlActive) {
 
         // allNumber = normalNumber + teenNumber + oldNumber;
         // allMoney = normalMoney + teenMoney + oldMoney;
-        console.log(allNumber + '뭥미');
         ticketPrice.innerHTML = allMoney + '원';
 
         if (allNumber > 16) {
@@ -287,7 +286,7 @@ reserveButton.addEventListener('click', function() {
     runningTime.value = theaterTime.innerHTML;
     ticketNumber.value = reserveNumber.innerHTML;
     selectedSeat.value = selectedSeats.innerHTML;
-    console.log(allNumber + '임');
+    console.log(allNumber);
     console.log(ticketNumber.value);
     console.log(allNumber === ticketNumber.value);
     console.log(allNumber === Number(ticketNumber.value));
