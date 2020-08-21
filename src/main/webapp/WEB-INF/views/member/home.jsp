@@ -15,8 +15,6 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <title>Welcome to Key's Cinema</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
 <!-- Google fonts-->
@@ -72,16 +70,16 @@
 					</c:choose>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="/member/write.do">회원가입</a></li>
-						<c:choose>
+					<c:choose>
 						<c:when test="${sessionScope.userid != null }">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/member/my.do">My page</a></li>
+							<li class="nav-item"><a class="nav-link js-scroll-trigger"
+								href="/member/my.do">My page</a></li>
 						</c:when>
 						<c:otherwise>
-						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/member/login.do">My page</a></li>
+							<li class="nav-item"><a class="nav-link js-scroll-trigger"
+								href="/member/login.do">My page</a></li>
 						</c:otherwise>
-						</c:choose>
+					</c:choose>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#contact">고객센터</a></li>
 
@@ -199,7 +197,7 @@
 					</div>
 				</div>
 			</div>
-			</div>
+		</div>
 	</section>
 	<!-- Contact-->
 	<section class="page-section" id="contact">

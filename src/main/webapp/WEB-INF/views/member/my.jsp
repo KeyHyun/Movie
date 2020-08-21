@@ -37,9 +37,9 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/styles.css" />
-	<link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/booking.css" />
-	<link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/custom.css" />
 </head>
 <body id="page-top">
@@ -85,7 +85,7 @@
 			</div>
 		</div>
 	</nav>
-		<!-- Masthead-->
+	<!-- Masthead-->
 	<header class="masthead">
 		<div class="container">
 			<div class="reserve-container h-100">
@@ -105,15 +105,13 @@
 
 		</div>
 		<form action="/">
-			<div style="float:left ;margin-top: 30px;padding-left:700px;">
+			<div style="float: left; margin-top: 30px; padding-left: 700px;">
 				<button>돌아가기</button>
 			</div>
 		</form>
 		<form action="movie/cancel.do">
-			<div style="float:right;margin-top: 30px;padding-right:700px">
+			<div style="float: right; margin-top: 30px; padding-right: 700px">
 				<button type="submit" name="uuser" value="${reser.b_user}">예매취소</button>
 		</form>
-
-
 </body>
 </html>

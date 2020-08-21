@@ -178,23 +178,21 @@
 							<div class="theater-time"></div>
 						</div>
 						<div class="selected-seats-wrapper">
-							<span class="selected-seats-title">좌석번호</span> 
-							<span class="selected-seats">선택한 좌석이 없습니다.</span>
+							<span class="selected-seats-title">좌석번호</span> <span
+								class="selected-seats">선택한 좌석이 없습니다.</span>
 						</div>
 						<div class="ticket-price-wrapper">
 							<div class="ticket-price-title">가격</div>
 							<div class="ticket-price">0원</div>
 						</div>
 						<form action="last.do" class="seatForm" method="post">
-							<input type="hidden" class="title" name="b_movie"> 
-							<input type="hidden" class="selectedTheater" name="b_branch">
-							<input type="hidden" class="reserveDate" name="b_time">
+							<input type="hidden" class="title" name="b_movie"> <input
+								type="hidden" class="selectedTheater" name="b_branch"> <input
+								type="hidden" class="reserveDate" name="b_time">
 							<!-- 티켓의수(선택한 좌석) -->
 							<input type="hidden" class="selectedSeat" name="b_seat">
 							<input type="hidden" name="b_user" value="${sessionScope.name}">
-							<button type="submit" class="reserve-button">
-								결제하기
-							</button>
+							<button type="submit" class="reserve-button">결제하기</button>
 						</form>
 					</div>
 

@@ -7,33 +7,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="movieList" resultType="movieDto">
 		select * from movies
-		where userid=#{userid}
+		where
+		userid=#{userid}
 	</select>
-	
+
 	<update id="initMovie">
 		UPDATE MOVIE_LIST
-	SET M_NAME = NULL
-	WHERE M_NAME is not null
+		SET M_NAME = NULL
+		WHERE M_NAME is not null
 	</update>
-	
-	<select id="selectSchedule" parameterType="String" resultType="movieDto">
-		select s_time, s_branch from SCHEDULE where s_movie=#{movie}
+
+	<select id="selectSchedule" parameterType="String"
+		resultType="movieDto">
+		select s_time, s_branch from SCHEDULE where
+		s_movie=#{movie}
 	</select>
-	
+
 	<insert id="insertBook">
-		insert into booking (b_movie,b_time,b_branch,b_user) values
+		insert into booking (b_movie,b_time,b_branch,b_user)
+		values
 		( #{b_movie},#{b_time},#{b_branch},#{b_user})
-	</insert>	
-	
-	<select id="mypage" parameterType="BookingDTO" resultType="bookingDto">
+	</insert>
+
+	<select id="mypage" parameterType="BookingDTO"
+		resultType="bookingDto">
 		select * from booking
 		where b_user=#{b_user}
 	</select>
-	
+
 	<delete id="deleteReser">
 		delete from booking
-		where b_user=#{b_user} and b_time=#{b_time}
+		where b_user=#{b_user} and
+		b_time=#{b_time}
 	</delete>
-	
+
 </mapper>
 

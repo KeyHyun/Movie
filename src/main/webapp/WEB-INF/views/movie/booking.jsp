@@ -16,9 +16,12 @@
 	src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <title>Welcome to Key's Cinema</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
- <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/booking.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custom.css" />
+<script
+	src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/booking.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/custom.css" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
 <!-- Google fonts-->
@@ -44,8 +47,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
 		id="mainNav">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="/">Key's
-				Cinema</a>
+			<a class="navbar-brand js-scroll-trigger" href="/">Key's Cinema</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -85,38 +87,39 @@
 	</nav>
 	<!-- Masthead-->
 	<header class="masthead">
-		<div class="container" style="height : 600px">
-			 <div class="reserve-container h-100">
-        <div class="movie-part" style="width : 200px">
-            <div class="reserve-title">영화</div>
-               <c:forEach var="i" items="${movie}">
-            	<button class="m_button" name="movie" data-movie="${i}">${i}</button><br>          	
-			</c:forEach>
-            </div>
-                 
-        <div class="day-part">
-            <div class="reserve-title">날짜</div>
-            <div class="reserve-date" style="height : 568px"></div>
-        </div>
-        <div class="time-part">
-            <div class="reserve-title">시간</div>
-        </div>
-         
-			
-            </div>
-        </div>
-        <div style="text-align:center;">
-        <form method="post" action="selectSeat.do">
-        <input type='hidden' id='selected_time' name='s_time'>
-        <input type='hidden' id='selected_movie' name='s_movie'>
-        <input type='hidden' id='selected_branch' name='s_branch'>
-        <input class="r_button" type="submit" value="예매하기" name="reser">
-        </form>
-        </div>
+		<div class="container" style="height: 600px">
+			<div class="reserve-container h-100">
+				<div class="movie-part" style="width: 200px">
+					<div class="reserve-title">영화</div>
+					<c:forEach var="i" items="${movie}">
+						<button class="m_button" name="movie" data-movie="${i}">${i}</button>
+						<br>
+					</c:forEach>
+				</div>
+
+				<div class="day-part">
+					<div class="reserve-title">날짜</div>
+					<div class="reserve-date" style="height: 568px"></div>
+				</div>
+				<div class="time-part">
+					<div class="reserve-title">시간</div>
+				</div>
 
 
-   
-    <script>
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<form method="post" action="selectSeat.do">
+				<input type='hidden' id='selected_time' name='s_time'> <input
+					type='hidden' id='selected_movie' name='s_movie'> <input
+					type='hidden' id='selected_branch' name='s_branch'> <input
+					class="r_button" type="submit" value="예매하기" name="reser">
+			</form>
+		</div>
+
+
+
+		<script>
 
 
 
@@ -221,10 +224,8 @@
         
 
         </script>
-	
+
 	</header>
-
-
 </html>
 
 

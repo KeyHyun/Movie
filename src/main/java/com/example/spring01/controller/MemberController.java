@@ -1,6 +1,5 @@
 package com.example.spring01.controller;
 
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,115 +21,51 @@ import com.example.spring01.service.MovieService;
 
 @Controller
 public class MemberController {
-	private static final Logger logger=
-			LoggerFactory.getLogger(MemberController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Inject
 	MemberService memberService;
 	@Inject
 	MovieService movieService;
-//	@RequestMapping("member/list.do")
-//	public String memberList(Model model) {
-//		List<MemberDTO> list=memberService.memberList();
-//		model.addAttribute("list",list);
-//		return "member/member_list";
-//	}
-	
-	@RequestMapping("member/my.do")
-	public String mypage(HttpSession session, Model model) {
-		Object user_id = session.getAttribute("userid");
-		String s_user = (String) user_id;
-		BookingDTO dto = new BookingDTO();
-		dto.setB_user(s_user);	
-		System.out.println("------"+dto);
-		List<BookingDTO> book_list = movieService.bookingList(dto);
-		System.out.println(book_list);
-		model.addAttribute("reser",book_list);
-		System.out.print(model);
-		return "member/my";
-	}
-	
-	//회원 가입을 위한 write page 이동 
+
+	// 회원 가입을 위한 write page 이동
 	@RequestMapping("member/write.do")
 	public String write() {
 		return "member/write";
 	}
-	
+
 	@RequestMapping("member/insert.do")
 	public String insert(@ModelAttribute MemberDTO dto) {
 		memberService.insertMember(dto);
 		return "redirect:home";
 	}
-	
-	//로그인을 위한 login page로 이동
+
+	// 로그인을 위한 login page로 이동
 	@RequestMapping("member/login.do")
 	public String login() {
 		return "member/login";
 	}
-	
+
 	@RequestMapping("member/login_check.do")
 	public ModelAndView login_check(@ModelAttribute MemberDTO dto, HttpSession session) {
-		String name=memberService.loginCheck(dto, session);
-		logger.info("name:"+name);
-		ModelAndView mav=new ModelAndView();
-		if(name != null) {
+		String name = memberService.loginCheck(dto, session);
+		logger.info("name:" + name);
+		ModelAndView mav = new ModelAndView();
+		if (name != null) {
 			mav.setViewName("member/home");
-		}
-		else {
+		} else {
 			mav.setViewName("member/login");
-			mav.addObject("message","error");
+			mav.addObject("message", "error");
 		}
 		return mav;
 	}
-	
-	
 
 	@RequestMapping("member/logout.do")
 	public ModelAndView logout(HttpSession session, ModelAndView mav) {
-		
+
 		memberService.logout(session);
 		mav.setViewName("member/home");
 		mav.addObject("message", "logout");
 		return mav;
 	}
-	
-	@RequestMapping("member/view.do")
-	public String view(@RequestParam String userid, Model model) {
-		model.addAttribute("dto",memberService.viewMember(userid));
-		return "member/view";
-	}
-	
-//	@RequestMapping("member/update.do")
-//	public String update(@ModelAttribute MemberDTO dto, Model model) {
-//		boolean result=memberService.checkPw(
-//				dto.getUserid(), dto.getPasswd());
-//		logger.info("비밀번호 확인:" + result);
-//		
-//		if(result) {
-//			memberService.updateMember(dto);
-//			return "redirect:/member/list.do";
-//		}
-//		else {
-//			MemberDTO dto2=memberService.viewMember(dto.getUserid());
-//			model.addAttribute("dto",dto);
-//			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
-//			return "member/view";
-//		}	
-//	}
-	
 
-//	
-//	@RequestMapping("member/delete.do")
-//	public String delete(@RequestParam String userid, @RequestParam String passwd, Model model) {
-//		boolean result=memberService.checkPw(userid, passwd);
-//		logger.info("비밀번호 확인:" + result);
-//		
-//		if(result) {
-//			memberService.deleteMember(userid);
-//			return "redirect:/member/list.do";
-//		}
-//		else {
-//			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
-//			return "member/view";
-//		}	
-//	}
 }

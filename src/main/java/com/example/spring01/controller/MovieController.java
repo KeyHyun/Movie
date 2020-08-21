@@ -32,74 +32,56 @@ public class MovieController {
 
 	@Autowired
 	MovieService movieService;
-	
+
 	@Autowired
 	MovieDAO movieDao;
-
 
 	@ResponseBody
 	@RequestMapping("movie/test.do")
 	public Map<String, Object> movie(HttpServletRequest request, HttpServletResponse response, Model model) {
 		logger.info("¼º°ø");
 		List<String> imgurl = movieService.search();
-//		model.addAttribute("imgurl", movieService.search(request));
-		Map<String, Object> result = new HashMap<>();
-//		int i = 1;
-//		for(String str : imgurl) {
-//			result.put("top"+i, str);
-//		}
-		result.put("imgurl", imgurl);
 
-		// {"imgurl":"[aaa,bbb,ccc]"}
+		Map<String, Object> result = new HashMap<>();
+
+		result.put("imgurl", imgurl);
 
 		return result;
 	}
-	@RequestMapping("movie/cancel.do")
-	public String Cancel(@RequestParam String userid) {
-		
-		return "/";
-	}
+
 	@RequestMapping("movie/booking.do")
 	public String booking_page(Model model) {
 		List<String> m_name = movieService.movie_list();
 		model.addAttribute("movie", m_name);
 		return "movie/booking";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("movie/s_movie.do")
-	public Map<String,Object> s_movie(HttpServletRequest request,HttpServletResponse response, Model model) {
-		Map<String,Object> result = new HashMap<>();
+	public Map<String, Object> s_movie(HttpServletRequest request, HttpServletResponse response, Model model) {
+		Map<String, Object> result = new HashMap<>();
 		String movie = request.getParameter("movie");
-		System.out.println("::::"+request.getParameter("movie"));
 		try {
 			List<MovieDTO> s_list = movieService.movieList(movie);
-			System.out.println(s_list);
 			result.put("s_list", s_list);
-		}catch (Exception e) {
-			// TODO: handle exception
+		} catch (Exception e) {
+
 			e.printStackTrace();
 		}
 		return result;
 	}
-	
+
 	@RequestMapping("movie/selectSeat.do")
 	public String select_seat(@ModelAttribute MovieDTO dto, Model model) {
-		model.addAttribute("dto",dto);
+		model.addAttribute("dto", dto);
 		return "movie/selectSeat";
 	}
 
-	@RequestMapping("movie/detail.do")
-	public String detail_view() {
-		return "movie/detail";
-	}
-	
 	@RequestMapping("movie/last.do")
 	public String last_view(@ModelAttribute BookingDTO dto, Model model) {
 		movieService.insertMovie(dto);
-		model.addAttribute("bookdto",dto);
+		model.addAttribute("bookdto", dto);
 		return "movie/last";
 	}
-
 
 }
