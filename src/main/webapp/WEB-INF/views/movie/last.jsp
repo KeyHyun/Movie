@@ -30,24 +30,21 @@
 	href="${pageContext.request.contextPath}/resources/css/seat.css">
 <link rel='stylesheet'
 	href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">	
+<link
+	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+	rel="stylesheet">
 <script
 	src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
 <link rel="stylesheet"
 	href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
 <!-- Google fonts-->
-<link
-	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
+<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
 	rel="stylesheet" />
-<link
-	href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap"
 	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+<link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
 	rel="stylesheet" type="text/css" />
 <!-- Third party plugin CSS-->
 <link
@@ -104,26 +101,27 @@
 	<header class="masthead">
 		<div class="container">
 			<div class="reserve-container h-100">
-				<div style="margin-top : 100px; width : 350px;">
-            <div class="reserve-title">예매 성공</div>
-            </div>
+				<div style="margin-top: 100px; width: 350px;">
+					<div class="reserve-title">예매 성공</div>
+				</div>
 			</div>
 		</div>
-		<div class="container" style="width : 450px;">
-		<div class="reser_container"> 예매 정보
-           <div class="reser_container_div">영화명 :</div>
-           <div class="reser_container_div">상영관 :</div>
-           <div class="reser_container_div">상영시간 :</div>
-            <div class="reser_container_div">상영날짜 :</div>
-            </div>
-            
+		<div class="container" style="width: 450px;">
+			<div class="reser_container">
+				예매 정보
+				<div class="reser_container_div">영화명 : ${bookdto.b_movie}</div>
+				<div class="reser_container_div">상영관 : ${bookdto.b_branch}</div>
+				<div class="reser_container_div">상영시간 : ${bookdto.b_time}</div>
+			</div>
+
 		</div>
 		<form action="/">
-		<div style="text-align : center; margin-top : 30px;">
-		<button>돌아가기</button>
+			<div style="text-align: center; margin-top: 30px;">
+				<button>돌아가기</button>
+			</div>
 		</form>
-		</div>
-		
+
+
 	</header>
-	</body>
-	</html>
+</body>
+</html>

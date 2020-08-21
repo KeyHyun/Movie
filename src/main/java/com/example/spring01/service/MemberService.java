@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.example.spring01.model.dto.BookingDTO;
 import com.example.spring01.model.dto.MemberDTO;
 
 public interface MemberService {

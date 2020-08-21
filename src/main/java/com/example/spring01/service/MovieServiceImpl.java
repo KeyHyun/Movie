@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.spring01.model.dao.MovieDAO;
+import com.example.spring01.model.dto.BookingDTO;
 import com.example.spring01.model.dto.MovieDTO;
 
 import kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService;
@@ -165,14 +166,17 @@ public class MovieServiceImpl implements MovieService {
 	}
 	
 	@Override
-	public void insertMovie (MovieDTO vo) {
+	public void insertMovie (BookingDTO vo) {
 		moviedao.insertMovie(vo);
 	}
 	
 	@Override
-	public List<MovieDTO> movieList(){
-		return moviedao.movieList();
+	public List<MovieDTO> movieList(String movie){
+		return moviedao.movieList(movie);
 	}
 	
-	
+	@Override
+	public List<BookingDTO> bookingList(BookingDTO vo){
+		return moviedao.bookingList(vo);
+	}
 }

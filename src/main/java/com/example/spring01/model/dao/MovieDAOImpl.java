@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.example.spring01.model.dto.BookingDTO;
 import com.example.spring01.model.dto.MovieDTO;
 
 
@@ -17,18 +18,18 @@ public class MovieDAOImpl implements MovieDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<MovieDTO> movieList() {
+	public List<MovieDTO> movieList(String movie) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("movie.selectSchedule"); //name space.Id
+		return sqlSession.selectList("movie.selectSchedule",movie); //name space.Id
 	}
 	
 	@Override
-	public void insertMovie (MovieDTO vo) {
-		sqlSession.insert("movie.insertMovie",vo);
+	public void insertMovie (BookingDTO vo) {
+		sqlSession.insert("movie.insertBook",vo);
 	}
 	
 	@Override
-	public void insertMovie (String string) {
-		sqlSession.insert("movie.insertMovie",string);
+	public List<BookingDTO> bookingList(BookingDTO vo) {
+		return sqlSession.selectList("movie.mypage",vo);
 	}
 }

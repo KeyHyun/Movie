@@ -15,14 +15,15 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <title>Welcome to Key's Cinema</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 <!-- Font Awesome icons (free version)-->
 <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
 <!-- Google fonts-->
 <link
 	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
 	rel="stylesheet" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap"
 	rel="stylesheet">
@@ -36,14 +37,17 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/styles.css" />
+	<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/booking.css" />
+	<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/custom.css" />
 </head>
 <body id="page-top">
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
 		id="mainNav">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top">Key's
-				Cinema</a>
+			<a class="navbar-brand js-scroll-trigger" href="/">Key's Cinema</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -81,13 +85,35 @@
 			</div>
 		</div>
 	</nav>
-	<!-- Masthead-->
+		<!-- Masthead-->
 	<header class="masthead">
-	<div class="container" style="width: 2000px; height : 800px ;margin-top : 100px; border : 1px solid #DDDDDD ;">
-		<div style="width: 30px; float: right;">아에이오우</div>
-		<div style="float: left;">아아아아</div>
-	</div>
-	
-	</header>
-	</body>
-	</html>
+		<div class="container">
+			<div class="reserve-container h-100">
+				<div style="margin-top: 100px; width: 350px;">
+					<div class="reserve-title">예매 성공</div>
+				</div>
+			</div>
+		</div>
+		<div class="container" style="width: 450px;">
+			<div class="reser_container">
+				예매 정보
+				<div class="reser_container_div">영화명 : ${reser.b_movie}</div>
+				<div class="reser_container_div">상영관 : ${reser.b_branch}</div>
+				<div class="reser_container_div">상영시간 : ${reser.b_time}</div>
+				<div class="reser_container_div">이름 : ${reser.b_user}</div>
+			</div>
+
+		</div>
+		<form action="/">
+			<div style="float:left ;margin-top: 30px;padding-left:700px;">
+				<button>돌아가기</button>
+			</div>
+		</form>
+		<form action="movie/cancel.do">
+			<div style="float:right;margin-top: 30px;padding-right:700px">
+				<button type="submit" name="uuser" value="${reser.b_user}">예매취소</button>
+		</form>
+
+
+</body>
+</html>

@@ -13,12 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.spring01.model.dao.MovieDAO;
+import com.example.spring01.model.dto.BookingDTO;
 import com.example.spring01.model.dto.MovieDTO;
 import com.example.spring01.service.MemberService;
 import com.example.spring01.service.MovieService;
@@ -53,30 +54,38 @@ public class MovieController {
 
 		return result;
 	}
-
+	@RequestMapping("movie/cancel.do")
+	public String Cancel(@RequestParam String userid) {
+		
+		return "/";
+	}
 	@RequestMapping("movie/booking.do")
 	public String booking_page(Model model) {
 		List<String> m_name = movieService.movie_list();
-		System.out.println(m_name);
 		model.addAttribute("movie", m_name);
-		System.out.println(model);
-		//model2.addAttribute("s_list",s_list);
-		//System.out.print(model2);
 		return "movie/booking";
 	}
 	
+	@ResponseBody
 	@RequestMapping("movie/s_movie.do")
-	public String s_movie(HttpServletRequest request, @RequestParam ("movie") String movie) {
-//		List<MovieDTO> s_list = movieService.movieList();
-//		System.out.println(s_list);
-//		model.addAttribute("s_list", s_list);
-		request.getParameter(movie);
-		System.out.println(movie);
-		return "movie/booking";
+	public Map<String,Object> s_movie(HttpServletRequest request,HttpServletResponse response, Model model) {
+		Map<String,Object> result = new HashMap<>();
+		String movie = request.getParameter("movie");
+		System.out.println("::::"+request.getParameter("movie"));
+		try {
+			List<MovieDTO> s_list = movieService.movieList(movie);
+			System.out.println(s_list);
+			result.put("s_list", s_list);
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	@RequestMapping("movie/selectSeat.do")
-	public String select_seat() {
+	public String select_seat(@ModelAttribute MovieDTO dto, Model model) {
+		model.addAttribute("dto",dto);
 		return "movie/selectSeat";
 	}
 
@@ -86,12 +95,11 @@ public class MovieController {
 	}
 	
 	@RequestMapping("movie/last.do")
-	public String last_view() {
+	public String last_view(@ModelAttribute BookingDTO dto, Model model) {
+		movieService.insertMovie(dto);
+		model.addAttribute("bookdto",dto);
 		return "movie/last";
 	}
-	// @RequestMapping("movie/insert.do")
-	// public String insert (@ModelAttribute MovieDTO dto) {
 
-//	}
 
 }

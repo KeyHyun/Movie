@@ -89,16 +89,11 @@
 			 <div class="reserve-container h-100">
         <div class="movie-part" style="width : 200px">
             <div class="reserve-title">영화</div>
-           <form action="s_movie.do" method="post">
                <c:forEach var="i" items="${movie}">
             	<button class="m_button" name="movie" data-movie="${i}">${i}</button><br>          	
 			</c:forEach>
-			</form>
             </div>
-                    <div class="theater-part">
-            <div class="reserve-title">극장</div>
-            <div class="theater-wrapper"></div>
-        </div>
+                 
         <div class="day-part">
             <div class="reserve-title">날짜</div>
             <div class="reserve-date" style="height : 568px"></div>
@@ -112,6 +107,9 @@
         </div>
         <div style="text-align:center;">
         <form method="post" action="selectSeat.do">
+        <input type='hidden' id='selected_time' name='s_time'>
+        <input type='hidden' id='selected_movie' name='s_movie'>
+        <input type='hidden' id='selected_branch' name='s_branch'>
         <input class="r_button" type="submit" value="예매하기" name="reser">
         </form>
         </div>
@@ -119,49 +117,51 @@
 
    
     <script>
-        const date = new Date();
+
+
+
+    $( document ).ready( function() {      
+    	const date = new Date();
         // console.log(date.getFullYear());
         const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
         const reserveDate = document.querySelector(".reserve-date");
 
       
-            const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
-            const year = date.getFullYear();
-            const month = date.getMonth();
-            for (i = date.getDate(); i <= lastDay.getDate(); i++) {
+           const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
+           const year = date.getFullYear();
+           const month = date.getMonth();
+           for (i = date.getDate(); i <= lastDay.getDate(); i++) {
 
-                const button = document.createElement("button");
-                const spanWeekOfDay = document.createElement("span");
-                const spanDay = document.createElement("span");
+               const button = document.createElement("button");
+               const spanWeekOfDay = document.createElement("span");
+               const spanDay = document.createElement("span");
 
-                //class넣기
-                button.classList = "movie-date-wrapper"
-                spanWeekOfDay.classList = "movie-week-of-day";
-                spanDay.classList = "movie-day";
+               //class넣기
+               button.classList = "movie-date-wrapper"
+               spanWeekOfDay.classList = "movie-week-of-day";
+               spanDay.classList = "movie-day";
 
-                //weekOfDay[new Date(2020-03-날짜)]
-                const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
+               //weekOfDay[new Date(2020-03-날짜)]
+               const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
 
-                //요일 넣기
-                if (dayOfWeek === "토") {
-                    spanWeekOfDay.classList.add("saturday");
-                    spanDay.classList.add("saturday");
-                } else if (dayOfWeek === "일") {
-                    spanWeekOfDay.classList.add("sunday");
-                    spanDay.classList.add("sunday");
-                }
-                spanWeekOfDay.innerHTML = dayOfWeek;
-                button.append(spanWeekOfDay);
-                //날짜 넣기
-                spanDay.innerHTML = i;
-                button.append(spanDay);
-                //button.append(i);
-                reserveDate.append(button);
+               //요일 넣기
+               if (dayOfWeek === "토") {
+                   spanWeekOfDay.classList.add("saturday");
+                   spanDay.classList.add("saturday");
+               } else if (dayOfWeek === "일") {
+                   spanWeekOfDay.classList.add("sunday");
+                   spanDay.classList.add("sunday");
+               }
+               spanWeekOfDay.innerHTML = dayOfWeek;
+               button.append(spanWeekOfDay);
+               //날짜 넣기
+               spanDay.innerHTML = i;
+               button.append(spanDay);
+               //button.append(i);
+               reserveDate.append(button);
 
-                dayClickEvent(button);
-            }
-
-        
+               dayClickEvent(button);
+           }
 
 
         function dayClickEvent(button) {
@@ -173,53 +173,52 @@
                 button.classList.add("movie-date-wrapper-active");
             })
         }
-
-
-        $( document ).ready( function() {           	
-            $(".m_button").on('click',(function(){
-            	console.log($(this).data('movie'));
-                 $.ajax({
-                 url : "/movie/s_movie.do",
-                 type : 'post',
-                 data:{"movie":$(this).data('movie')},
-                 contentType: "charset=utf-8",
-                   success: function(data){
-                    console.log("성공");
-                   },
-                   error: function(){
-                      console.log("실패");
-                   }
-              });
-                
- })); });
-        
-//        $( document ).ready( function() {
+             	
+        $(".m_button").on('click',function(){
+            alert($(this).html());
+        	console.log($(this).data('movie'));
+        	$('.m_button').removeClass('selected_movie');
+    		$(this).addClass("selected_movie");
+    	    $('#selected_movie').val($(this).data('movie'));
+        	var movie = $(this).data('movie');
+             $.ajax({
+             url : "/movie/s_movie.do",
+             data:{"movie":movie},
+             dataType: "json",
+             success: function(data){
+                 console.log(data.s_list.length);
+                 $('.time-part button').remove();
+				 $('.theater-part button').remove();
+                 for(var i = 0; i < data.s_list.length; i++){
+                     var tt = data.s_list[i].s_time;
+                     var ss = data.s_list[i].s_branch;
+                     	$btn = $('<button class="times" onclick="clicktime('+i+')" data-time='+tt+' data-branch='+ss+' style="width:380px;height:50px">'+data.s_list[i].s_time+'<br>'+data.s_list[i].s_branch+'</button>');
+//                      	$bts = $('<button class="times" style="width:100px;height:100px">');
+// 						<button class="m_button" name="movie" data-movie="${i}">${i}</button><br>  
+						$('.time-part').append($btn);
+// 						$('.theater-part').append($bts);
+						console.log($btn);
+						console.log($('.time-part').html());
+						
+                     }
+             },
+             error: function(){
+                console.log("실패");
+             }
+          });
             
-//            $("#m_button").click(function(){
-//             	$.ajax({
-//             	url : "/movie/test.do",
-//             	type : 'get',
-//             	contentType: "application/json; charset=utf-8;",
-//                 dataType: "json",
-//               	success: function(data){
-//                   	var str = data.imgurl+'';
-//                   	var list = str.split(",");
-//     	             //console.log(list.size);
-//                   	for(var i = 1; i <= 3; i++){
-//                   		$('#top'+i).attr('src',list[i-1]);
-//     	              	console.log($('#top'+i).attr('src'));
-//                       }
-//               	},
-//               	error: function(){
-//               		alert("error");
-//               	}
-//             });
-//                      alert($(this).attr('value'));
+		}); 
+    });
 
-  //          });
-      
-    //    });
-
+    function clicktime(index){
+        console.log(index);
+        $('.times').removeClass('selected_time');
+		$('.times:eq('+index+')').addClass("selected_time");
+		$('#selected_time').val($('.times:eq('+index+')').data('time'));
+		$('#selected_branch').val($('.times:eq('+index+')').data('branch'));
+		console.log()
+        }
+        
 
         </script>
 	

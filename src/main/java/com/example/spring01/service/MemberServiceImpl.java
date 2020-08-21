@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 import com.example.spring01.model.dao.MemberDAO;
+import com.example.spring01.model.dto.BookingDTO;
 import com.example.spring01.model.dto.MemberDTO;
 
 @Service
@@ -68,4 +69,5 @@ public class MemberServiceImpl implements MemberService {
 	public void logout(HttpSession session) {
 		session.invalidate();
 	}
+	
 }

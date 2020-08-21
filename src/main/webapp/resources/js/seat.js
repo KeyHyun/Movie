@@ -280,8 +280,7 @@ function mapping(input, i, j) {
 //form 제출시 hidden설정하기
 reserveButton.addEventListener('click', function() {
     title.value = selectedMovie.innerHTML;
-    selectedTheater.value =
-        selectedTheaterPlaceInfo[0].innerHTML +
+    selectedTheater.value = selectedTheaterPlaceInfo[0].innerHTML +
         ' ' +
         selectedTheaterPlaceInfo[1].innerHTML;
     reserveDate.value = theaterDate.innerHTML;

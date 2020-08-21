@@ -1,6 +1,8 @@
 package com.example.spring01.controller;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -13,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.spring01.model.dto.BookingDTO;
 import com.example.spring01.model.dto.MemberDTO;
 import com.example.spring01.service.MemberService;
+import com.example.spring01.service.MovieService;
 
 @Controller
 public class MemberController {
@@ -22,7 +26,8 @@ public class MemberController {
 			LoggerFactory.getLogger(MemberController.class);
 	@Inject
 	MemberService memberService;
-	
+	@Inject
+	MovieService movieService;
 //	@RequestMapping("member/list.do")
 //	public String memberList(Model model) {
 //		List<MemberDTO> list=memberService.memberList();
@@ -31,19 +36,29 @@ public class MemberController {
 //	}
 	
 	@RequestMapping("member/my.do")
-	public String mypage() {
+	public String mypage(HttpSession session, Model model) {
+		Object user_id = session.getAttribute("userid");
+		String s_user = (String) user_id;
+		BookingDTO dto = new BookingDTO();
+		dto.setB_user(s_user);	
+		System.out.println("------"+dto);
+		List<BookingDTO> book_list = movieService.bookingList(dto);
+		System.out.println(book_list);
+		model.addAttribute("reser",book_list);
+		System.out.print(model);
 		return "member/my";
 	}
+	
 	//회원 가입을 위한 write page 이동 
 	@RequestMapping("member/write.do")
 	public String write() {
 		return "member/write";
 	}
-	//DB에 회원가입 정보 저장 후, 메인 페이지로 이동 (시간 남으면 회원가입 완료 창 + 메인화면 이동 창)
+	
 	@RequestMapping("member/insert.do")
 	public String insert(@ModelAttribute MemberDTO dto) {
 		memberService.insertMember(dto);
-		return "redirect:member/home";
+		return "redirect:home";
 	}
 	
 	//로그인을 위한 login page로 이동
@@ -68,11 +83,7 @@ public class MemberController {
 	}
 	
 	
-//	public String logout(HttpSession session) {
-//	
-//		memberService.logout(session);
-//		return "member/home";
-//	}
+
 	@RequestMapping("member/logout.do")
 	public ModelAndView logout(HttpSession session, ModelAndView mav) {
 		

@@ -163,11 +163,10 @@
 						</div>
 					</div>
 					<div class="select-seat-information">
-						<div class="selected-movie">aa</div>
+						<div class="selected-movie">${dto.s_movie}</div>
 						<div class="select-seat-information-wrapper">
-							<div class="select-theater-place selected-theater-place-info">CGV강남</div>
-							<div class="select-theater-place selected-theater-place-info">3관
-								8층</div>
+							<div class="select-theater-place selected-theater-place-info">Cinema</div>
+							<div class="select-theater-place selected-theater-place-info">${dto.s_branch}</div>
 							<div class="select-theater-place">
 								<span>남은좌석</span><span class="remain-seats">152</span>/<span
 									class="all-seats">172</span>
@@ -175,29 +174,25 @@
 
 						</div>
 						<div class="select-theater-date">
-							<div class="theater-date">aa</div>
-							<div class="theater-time">aa</div>
+							<div class="theater-date">${dto.s_time}</div>
+							<div class="theater-time"></div>
 						</div>
 						<div class="selected-seats-wrapper">
-							<span class="selected-seats-title">좌석번호</span> <span
-								class="selected-seats">선택한 좌석이 없습니다.</span>
+							<span class="selected-seats-title">좌석번호</span> 
+							<span class="selected-seats">선택한 좌석이 없습니다.</span>
 						</div>
 						<div class="ticket-price-wrapper">
 							<div class="ticket-price-title">가격</div>
 							<div class="ticket-price">0원</div>
 						</div>
 						<form action="last.do" class="seatForm" method="post">
-							<input type="hidden" class="title" name="title"> <input
-								type="hidden" class="selectedTheater" name="selectedTheater">
-							<input type="hidden" class="reserveDate" name="movieDate">
-							<input type="hidden" class="runningTime" name="runningTime">
-							<input type="hidden" class="movieAge" name="movieAge" value="a">
+							<input type="hidden" class="title" name="b_movie"> 
+							<input type="hidden" class="selectedTheater" name="b_branch">
+							<input type="hidden" class="reserveDate" name="b_time">
 							<!-- 티켓의수(선택한 좌석) -->
-							<input type="hidden" class="ticketNumber" name="ticketNumber">
-							<input type="hidden" class="selectedSeat" name="selectedSeat">
-							<!-- 결제 정보 -->
-							<input type="hidden" class="payMoney" name="payMoney">
-							<button type="button" class="reserve-button">
+							<input type="hidden" class="selectedSeat" name="b_seat">
+							<input type="hidden" name="b_user" value="${sessionScope.name}">
+							<button type="submit" class="reserve-button">
 								결제하기
 							</button>
 						</form>

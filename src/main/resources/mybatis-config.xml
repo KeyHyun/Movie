@@ -9,6 +9,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	alias="memberDto" type="com.example.spring01.model.dto.MemberDTO"/>
 	<typeAlias
 	alias="movieDto" type="com.example.spring01.model.dto.MovieDTO"/>
+	<typeAlias
+	alias="bookingDto" type="com.example.spring01.model.dto.BookingDTO"/>
 </typeAliases>
 
 </configuration>

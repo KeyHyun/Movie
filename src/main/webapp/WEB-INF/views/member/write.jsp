@@ -14,9 +14,9 @@
 
 	<div class="container" style="margin-top: 30px;">
 		<div class="col-lg-4">
-			<div class="jumbotron" style="padding-top: 20px;">
+			<div class="jumbotron" style="padding-top: 20px; text-align:center;">
 				<form method="post"	action="insert.do">
-					<h3 style="text-align: center;">회원가입 화면</h3>
+					<h3 style="text-align: center;">회원가입</h3>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="아이디" name="userid" maxlength="20">
 					</div>
